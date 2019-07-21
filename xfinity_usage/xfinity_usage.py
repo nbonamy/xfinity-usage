@@ -237,8 +237,8 @@ class XfinityUsage(object):
         else:
             #logger.info('Sleeping...')
             #time.sleep(5)  # unfortunately, seems necessary
-        self.wait_for_page_load()
-        self.do_screenshot()
+            self.wait_for_page_load()
+            self.do_screenshot()
 
     def get_usage_json(self):
         """Return the JSON usage information from the internal API url."""
