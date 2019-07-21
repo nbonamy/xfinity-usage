@@ -78,7 +78,7 @@ selenium_log.propagate = True
 class XfinityUsage(object):
     """Class to screen-scrape Xfinity site for usage information."""
 
-    USAGE_URL = 'https://customer.xfinity.com/#/devices'
+    USAGE_URL = 'https://customer.xfinity.com/#/services/internet'
     JSON_URL = 'https://customer.xfinity.com/apis/services/internet/usage'
 
     def __init__(self, username, password, debug=False,
@@ -234,13 +234,10 @@ class XfinityUsage(object):
                 self.get_usage_page(count=(count + 1))
             except Exception:
                 logger.warning('Exception while logging in', exc_info=True)
-        logger.info('Sleeping 5s...')
-        time.sleep(5)  # unfortunately, seems necessary
+        else:
+            #logger.info('Sleeping...')
+            #time.sleep(5)  # unfortunately, seems necessary
         self.wait_for_page_load()
-        self.do_screenshot()
-        if '<span class="polaris-greeting">' not in self.browser.page_source:
-            logger.info('<span class="polaris-greeting"> not in page source;'
-                        'login may have failed.')
         self.do_screenshot()
 
     def get_usage_json(self):
