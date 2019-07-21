@@ -397,7 +397,7 @@ class XfinityUsage(object):
             logger.debug('getting Chrome browser (local) with --headless')
             chrome_options = Options()
             chrome_options.add_argument("--headless")
-            browser = webdriver.Chrome(chrome_options=chrome_options)
+            browser = webdriver.Chrome(options=chrome_options)
         elif self.browser_name == 'phantomjs':
             logger.debug("getting PhantomJS browser (local)")
             dcap = dict(DesiredCapabilities.PHANTOMJS)
